@@ -18,6 +18,9 @@ class Iptv (object):
         self.DB = db.DataBase()
 
     def run(self) :
+        BaseCN = baseCN.Source()
+        BaseCN.getSource()
+        
         Base = base.Source()
         Base.getSource()
 
