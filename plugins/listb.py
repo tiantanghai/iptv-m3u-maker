@@ -24,11 +24,12 @@ class Source (object) :
         res = self.T.getPage(url, req)
 
         if res['code'] == 200 :
-            #pattern = re.compile(r"<li><a href=\"(.*?)\" data-ajax=\"false\">.*?<\/a><\/li>", re.I|re.S)
-            pattern = re.compile(r"<li><a href=\"?tid=tt\" data-ajax=\"false\">.*?<\/a><\/li>", re.I|re.S)            
+            pattern = re.compile(r"<li><a href=\"(.*?)\" data-ajax=\"false\">.*?<\/a><\/li>", re.I|re.S)         
             postList = pattern.findall(res['body'])
 
             for post in postList :
+                if post.endswith('tt') == False:
+                    continue
                 url = self.siteUrl + post
                 req = [
                     'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
