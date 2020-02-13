@@ -7,6 +7,7 @@ import time
 import re
 import json
 from plugins import base
+from plugins import baseCN
 # from plugins import lista
 from plugins import listb
 from plugins import dotpy
