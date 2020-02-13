@@ -23,13 +23,31 @@ class Source (object) :
         res = self.T.getPage(url, req)
 
         if res['code'] == 200 :
-            pattern = re.compile(r"<code(.*?)</code>", re.I|re.S)
-            tmp = pattern.findall(res['body'])
+            tmp = res['body']
+            print(tmp)
+            print("a=================================================")
 
-            pattern = re.compile(r"#EXTINF:0,(.*?)\n#EXTVLCOPT:network-caching=1000\n(.*?)\n", re.I|re.S)
+            #pattern = re.compile(r"#EXTINF:*,(.*?)\n(.*?)", re.I|re.S)
+            #pattern = re.compile(r"*,(.*?)", re.I|re.S)
+            rows = tmp.split("\n")
+            print("rows:" , rows)
+            #sourceList = pattern.findall(tmp)
+            sourceList = []
+            source = []
+            for row in rows:
+                if row.startswith('#EXTM3U'):
+                    continue
+                if row.startswith('#EXTINF'):
+                    source = []
+                    source.append(row.split(",")[1])
+                    continue
+                if row.startswith('http'):
+                    source.append(row)
+                sourceList.append(source)
 
-            sourceList = pattern.findall(tmp[0])
-            sourceList = sourceList + pattern.findall(tmp[1])
+            print("sourceList=================================================")
+            print(sourceList)
+
 
             threads = []
             for item in sourceList :
