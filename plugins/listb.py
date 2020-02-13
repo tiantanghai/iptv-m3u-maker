@@ -24,7 +24,8 @@ class Source (object) :
         res = self.T.getPage(url, req)
 
         if res['code'] == 200 :
-            pattern = re.compile(r"<li><a href=\"(.*?)\" data-ajax=\"false\">.*?<\/a><\/li>", re.I|re.S)
+            #pattern = re.compile(r"<li><a href=\"(.*?)\" data-ajax=\"false\">.*?<\/a><\/li>", re.I|re.S)
+            pattern = re.compile(r"<li><a href=\"?tid=tt\" data-ajax=\"false\">.*?<\/a><\/li>", re.I|re.S)            
             postList = pattern.findall(res['body'])
 
             for post in postList :
