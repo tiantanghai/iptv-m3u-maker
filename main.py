@@ -22,14 +22,14 @@ class Iptv (object):
 #        Base = base.Source()
 #        Base.getSource()
 
-        BaseCN = baseCN.Source()
-        BaseCN.getSource()
+#        BaseCN = baseCN.Source()
+#        BaseCN.getSource()
 
 #        Dotpy = dotpy.Source()
 #        Dotpy.getSource()
 
-#        listB = listb.Source()
-#        listB.getSource()
+        listB = listb.Source()
+        listB.getSource()
 
         # # listA = lista.Source()
         # # urlList = listA.getSource()
